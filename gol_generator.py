@@ -74,39 +74,6 @@ class Life:
 
         return good_neighbours
 
-    def _is_edge_cell(self, location):
-        """
-        Detects whether a cell is on any edge
-        """
-        return any([self._is_top_cell(location),
-                    self._is_bottom_cell(location),
-                    self._is_left_cell(location),
-                    self._is_right_cell(location),])
-
-    def _is_top_cell(self, location):
-        """
-        Detects whether a cell is on the top
-        """
-        return location[1] == 0
-
-    def _is_bottom_cell(self, location):
-        """
-        Detects whether a cell is on the bottom
-        """
-        return location[1] == self.lifescape.shape[1] - 1
-
-    def _is_left_cell(self, location):
-        """
-        Detects whether a cell is on the left
-        """
-        return location[0] == 0
-
-    def _is_right_cell(self, location):
-        """
-        Detects whether a cell is on the right
-        """
-        return location[0] == self.lifescape.shape[0] - 1
-
     def _is_bad_location(self, location):
         """
         Detects whether a a given location is valid
