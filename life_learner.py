@@ -28,7 +28,6 @@ def build_life_nn(size= (25, 25), num_samples=100, random_density=0.3, epochs=10
         # add this as a training example
         dataset.addSample(input, output)
 
-
     # build a simple network
     network = FeedForwardNetwork()
 
@@ -60,10 +59,11 @@ def build_life_nn(size= (25, 25), num_samples=100, random_density=0.3, epochs=10
     # this probaly does something
     network.sortModules()
 
-    #
+    # define the trainer
     trainer = BackpropTrainer(network, dataset)
 
     for i in range(epochs):
         training_error = trainer.train()
+        print "Training Error: %f" % training_error
 
     return (network, training_error)
