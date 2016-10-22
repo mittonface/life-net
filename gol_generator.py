@@ -18,11 +18,12 @@ class Life:
         make_dead = []
         for i in range(self.lifescape.shape[0]):
             for j in range(self.lifescape.shape[1]):
-                if self._get_sum_neighbours(self._get_cell_neighbours((i, j))) < 2:
+                sum_neighbours = self._get_sum_neighbours(self._get_cell_neighbours((i, j)))
+                if sum_neighbours < 2:
                     make_dead.append((i, j))
-                elif self._get_sum_neighbours(self._get_cell_neighbours((i, j))) > 3:
+                elif sum_neighbours > 3:
                     make_dead.append((i, j))
-                elif self._get_sum_neighbours(self._get_cell_neighbours((i, j))) == 3:
+                elif sum_neighbours == 3:
                     make_alive.append((i, j))
 
         # make them alive or dead
