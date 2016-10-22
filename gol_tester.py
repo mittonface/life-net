@@ -34,47 +34,6 @@ class LifeTester(unittest.TestCase):
 
         self.assertEqual((6, 6), life.lifescape.shape)
 
-
-    def test_edge_detector_top(self):
-        """
-        Test that we can detect if a location is on the top edge
-        """
-        life = Life()
-
-        self.assertTrue(life._is_edge_cell((0, 0)))
-        self.assertFalse(life._is_edge_cell((1, 2)))
-        self.assertTrue(life._is_edge_cell((10, 0)))
-
-    def test_edge_detector_bottom(self):
-        """
-        Test that we can detect if a location is on the bottom edge
-        """
-        life = Life()
-
-        self.assertTrue(life._is_edge_cell((24, 24)))
-        self.assertFalse(life._is_edge_cell((23, 23)))
-        self.assertTrue(life._is_edge_cell((20, 24)))
-
-    def test_edge_detector_left(self):
-        """
-        Test that we can detect if a location is on the left edge
-        """
-        life = Life()
-
-        self.assertTrue(life._is_edge_cell((0, 0)))
-        self.assertFalse(life._is_edge_cell((1, 2)))
-        self.assertTrue(life._is_edge_cell((0, 23)))
-
-    def test_edge_detector_right(self):
-        """
-        Test that we can detect if a location is on the right edge
-        """
-        life = Life()
-
-        self.assertTrue(life._is_edge_cell((24, 0)))
-        self.assertFalse(life._is_edge_cell((22, 23)))
-        self.assertTrue(life._is_edge_cell((24, 10)))
-
     def test_get_neighbours_no_edge(self):
         """
         Test that we can get the correct neighbour lists on non edge cells
@@ -139,80 +98,6 @@ class LifeTester(unittest.TestCase):
         actual = life._get_cell_neighbours((24, 5))
         self.assertEqual(sorted(expected), sorted(actual))
         self.assertEqual(5, len(actual))
-
-
-    def test_is_top_cell(self):
-        """
-        Test that we can tell if a cell is on the top
-        """
-        life = Life()
-
-        location = (0, 0)
-        self.assertTrue(life._is_top_cell(location))
-
-        location = (0, 1)
-        self.assertFalse(life._is_top_cell(location))
-
-        location = (23, 2)
-        self.assertFalse(life._is_top_cell(location))
-
-        location = (3, 0)
-        self.assertTrue(life._is_top_cell(location))
-
-    def test_is_bottom_cell(self):
-        """
-        Test that we can tell if a cell is on the bottom
-        """
-        life = Life()
-
-        location = (0, 24)
-        self.assertTrue(life._is_bottom_cell(location))
-
-        location = (0, 23)
-        self.assertFalse(life._is_bottom_cell(location))
-
-        location = (10, 23)
-        self.assertFalse(life._is_bottom_cell(location))
-
-        location = (24, 24)
-        self.assertTrue(life._is_bottom_cell(location))
-
-    def test_is_left_cell(self):
-        """
-        Test that we can tell if a cell is on the left
-        """
-        life = Life()
-
-        location = (0, 24)
-        self.assertTrue(life._is_left_cell(location))
-
-        location = (1, 0)
-        self.assertFalse(life._is_left_cell(location))
-
-        location = (2, 32)
-        self.assertFalse(life._is_left_cell(location))
-
-        location = (0, 0)
-        self.assertTrue(life._is_left_cell(location))
-
-
-    def test_is_right_cell(self):
-        """
-        Test that we can tell if a cell is on the right
-        """
-        life = Life()
-
-        location = (24, 24)
-        self.assertTrue(life._is_right_cell(location))
-
-        location = (23, 0)
-        self.assertFalse(life._is_right_cell(location))
-
-        location = (11, 24)
-        self.assertFalse(life._is_right_cell(location))
-
-        location = (24, 23)
-        self.assertTrue(life._is_right_cell(location))
 
     def test_random_lifescape(self):
         """
